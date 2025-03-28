@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export default (props: any) => {
-    const { nodes, materials } = useGLTF('/laptop.glb')
+    const { nodes, materials } = useGLTF('/laptop.glb') as any
     return (
         <group {...props} dispose={null}>
             <group position={[0, 50.454, -8.888]} rotation={[-1.943, 0, -Math.PI / 2]} scale={100}>

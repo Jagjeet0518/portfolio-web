@@ -5,18 +5,24 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@gsap/react':
-    specifier: ^2.1.2
-    version: 2.1.2(gsap@3.12.7)(react@19.0.0)
   '@react-three/drei':
     specifier: ^10.0.5
     version: 10.0.5(@react-three/fiber@9.1.0)(@types/react@19.0.12)(@types/three@0.174.0)(react-dom@19.0.0)(react@19.0.0)(three@0.174.0)
   '@react-three/fiber':
     specifier: ^9.1.0
     version: 9.1.0(@types/react@19.0.12)(react-dom@19.0.0)(react@19.0.0)(three@0.174.0)
-  gsap:
-    specifier: ^3.12.7
-    version: 3.12.7
+  lenis:
+    specifier: ^1.2.3
+    version: 1.2.3(react@19.0.0)
+  lucide-react:
+    specifier: ^0.484.0
+    version: 0.484.0(react@19.0.0)
+  motion:
+    specifier: ^12.6.2
+    version: 12.6.2(react-dom@19.0.0)(react@19.0.0)
+  motion-plus:
+    specifier: ^0.1.6
+    version: 0.1.6(react-dom@19.0.0)(react@19.0.0)
   next:
     specifier: 15.2.4
     version: 15.2.4(react-dom@19.0.0)(react@19.0.0)
@@ -26,6 +32,12 @@ dependencies:
   react-dom:
     specifier: ^19.0.0
     version: 19.0.0(react@19.0.0)
+  react-fast-marquee:
+    specifier: ^1.6.5
+    version: 1.6.5(react-dom@19.0.0)(react@19.0.0)
+  react-icons:
+    specifier: ^5.5.0
+    version: 5.5.0(react@19.0.0)
   three:
     specifier: ^0.174.0
     version: 0.174.0
@@ -74,16 +86,6 @@ packages:
       tslib: 2.8.1
     dev: false
     optional: true
-
-  /@gsap/react@2.1.2(gsap@3.12.7)(react@19.0.0):
-    resolution: {integrity: sha512-JqliybO1837UcgH2hVOM4VO+38APk3ECNrsuSM4MuXp+rbf+/2IG2K1YJiqfTcXQHH7XlA0m3ykniFYstfq0Iw==}
-    peerDependencies:
-      gsap: ^3.12.5
-      react: '>=17'
-    dependencies:
-      gsap: 3.12.7
-      react: 19.0.0
-    dev: false
 
   /@img/sharp-darwin-arm64@0.33.5:
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -779,6 +781,27 @@ packages:
   /fflate@0.8.2:
     resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
 
+  /framer-motion@12.6.2(react-dom@19.0.0)(react@19.0.0):
+    resolution: {integrity: sha512-7LgPRlPs5aG8UxeZiMCMZz8firC53+2+9TnWV22tuSi38D3IFRxHRUqOREKckAkt6ztX+Dn6weLcatQilJTMcg==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      motion-dom: 12.6.1
+      motion-utils: 12.5.0
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      tslib: 2.8.1
+    dev: false
+
   /glsl-noise@0.0.0:
     resolution: {integrity: sha512-b/ZCF6amfAUb7dJM/MxRs7AetQEahYzJ8PtgfrmEdtw6uyGOr+ZSGtgjFm6mfsBkxJ4d2W7kg+Nlqzqvn3Bc0w==}
     dev: false
@@ -786,10 +809,6 @@ packages:
   /graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
     dev: true
-
-  /gsap@3.12.7:
-    resolution: {integrity: sha512-V4GsyVamhmKefvcAKaoy0h6si0xX7ogwBoBSs2CTJwt7luW0oZzC0LhdkyuKV8PJAXr7Yaj8pMjCKD4GJ+eEMg==}
-    dev: false
 
   /hls.js@1.5.20:
     resolution: {integrity: sha512-uu0VXUK52JhihhnN/MVVo1lvqNNuhoxkonqgO3IpjvQiGpJBdIXMGkofjQb/j9zvV7a1SW8U9g1FslWx/1HOiQ==}
@@ -832,6 +851,23 @@ packages:
     resolution: {integrity: sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A==}
     hasBin: true
     dev: true
+
+  /lenis@1.2.3(react@19.0.0):
+    resolution: {integrity: sha512-H3VUn62jvQPfyxGW2F0STJPhP1VzX5r05KtiZ0uxHYD9xtbfTvj2eX/Km26+x13zlaKfHacEe1DTC3ouFrxw+g==}
+    peerDependencies:
+      '@nuxt/kit': '>=3.0.0'
+      react: '>=17.0.0'
+      vue: '>=3.0.0'
+    peerDependenciesMeta:
+      '@nuxt/kit':
+        optional: true
+      react:
+        optional: true
+      vue:
+        optional: true
+    dependencies:
+      react: 19.0.0
+    dev: false
 
   /lie@3.3.0:
     resolution: {integrity: sha512-UaiMJzeWRlEujzAuw5LokY1L5ecNQYZKfmyZ9L7wDHb/p5etKaxXhohBcrw0EYby+G/NA52vRSN4N39dxHAIwQ==}
@@ -947,6 +983,14 @@ packages:
       lightningcss-win32-x64-msvc: 1.29.2
     dev: true
 
+  /lucide-react@0.484.0(react@19.0.0):
+    resolution: {integrity: sha512-oZy8coK9kZzvqhSgfbGkPtTgyjpBvs3ukLgDPv14dSOZtBtboryWF5o8i3qen7QbGg7JhiJBz5mK1p8YoMZTLQ==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    dependencies:
+      react: 19.0.0
+    dev: false
+
   /maath@0.10.8(@types/three@0.174.0)(three@0.174.0):
     resolution: {integrity: sha512-tRvbDF0Pgqz+9XUa4jjfgAQ8/aPKmQdWXilFu2tMy4GWj4NOsx99HlULO4IeREfbO3a0sA145DZYyvXPkybm0g==}
     peerDependencies:
@@ -967,6 +1011,87 @@ packages:
 
   /meshoptimizer@0.18.1:
     resolution: {integrity: sha512-ZhoIoL7TNV4s5B6+rx5mC//fw8/POGyNxS/DZyCJeiZ12ScLfVwRE/GfsxwiTkMYYD5DmK2/JXnEVXqL4rF+Sw==}
+
+  /motion-dom@12.6.1:
+    resolution: {integrity: sha512-8XVsriTUEVOepoIDgE/LDGdg7qaKXWdt+wQA/8z0p8YzJDLYL8gbimZ3YkCLlj7bB2i/4UBD/g+VO7y9ZY0zHQ==}
+    dependencies:
+      motion-utils: 12.5.0
+    dev: false
+
+  /motion-plus-dom@0.1.5(react-dom@19.0.0)(react@19.0.0):
+    resolution: {integrity: sha512-/XIAij0nud4sMFq1wrDQGhLJ/+Dfc/or0IyrbjwFgp+kprDRVpGqqJ+NSx9cwqS/QVJUoLzfTJ+yr88lC/soLQ==}
+    dependencies:
+      motion: 12.6.2(react-dom@19.0.0)(react@19.0.0)
+      motion-dom: 12.6.1
+      motion-utils: 12.5.0
+    transitivePeerDependencies:
+      - '@emotion/is-prop-valid'
+      - react
+      - react-dom
+    dev: false
+
+  /motion-plus-react@0.1.5(react-dom@19.0.0)(react@19.0.0):
+    resolution: {integrity: sha512-RyH4iuvUpC8VphhMp7taLgb8siYMaVv9F3ELkDI5YdsOSsLQ8h9FqDAmFscIye/v+C6qwFjpcuOFmoLPy1UFOQ==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      motion: 12.6.2(react-dom@19.0.0)(react@19.0.0)
+      motion-plus-dom: 0.1.5(react-dom@19.0.0)(react@19.0.0)
+      motion-utils: 12.5.0
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+    transitivePeerDependencies:
+      - '@emotion/is-prop-valid'
+    dev: false
+
+  /motion-plus@0.1.6(react-dom@19.0.0)(react@19.0.0):
+    resolution: {integrity: sha512-xw5wzmmNX2Z8K6KndsiJe4oRndjBM5zOJ4pPOEhxcOpN5nieuw4EXztG2yOKDZ8DGZJWq8HyC9LCf0IkGYy7tg==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      motion-plus-dom: 0.1.5(react-dom@19.0.0)(react@19.0.0)
+      motion-plus-react: 0.1.5(react-dom@19.0.0)(react@19.0.0)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+    transitivePeerDependencies:
+      - '@emotion/is-prop-valid'
+    dev: false
+
+  /motion-utils@12.5.0:
+    resolution: {integrity: sha512-+hFFzvimn0sBMP9iPxBa9OtRX35ZQ3py0UHnb8U29VD+d8lQ8zH3dTygJWqK7av2v6yhg7scj9iZuvTS0f4+SA==}
+    dev: false
+
+  /motion@12.6.2(react-dom@19.0.0)(react@19.0.0):
+    resolution: {integrity: sha512-8OBjjuC59WuWHKmPzVWT5M0t5kDxtkfMfHF1M7Iey6F/nvd0AI15YlPnpGlcagW/eOfkdWDO90U/K5LF/k55Yw==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      framer-motion: 12.6.2(react-dom@19.0.0)(react@19.0.0)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      tslib: 2.8.1
+    dev: false
 
   /nanoid@3.3.11:
     resolution: {integrity: sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==}
@@ -1062,6 +1187,24 @@ packages:
     dependencies:
       react: 19.0.0
       scheduler: 0.25.0
+    dev: false
+
+  /react-fast-marquee@1.6.5(react-dom@19.0.0)(react@19.0.0):
+    resolution: {integrity: sha512-swDnPqrT2XISAih0o74zQVE2wQJFMvkx+9VZXYYNSLb/CUcAzU9pNj637Ar2+hyRw6b4tP6xh4GQZip2ZCpQpg==}
+    peerDependencies:
+      react: '>= 16.8.0 || ^18.0.0'
+      react-dom: '>= 16.8.0 || ^18.0.0'
+    dependencies:
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+    dev: false
+
+  /react-icons@5.5.0(react@19.0.0):
+    resolution: {integrity: sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 19.0.0
     dev: false
 
   /react-reconciler@0.31.0(react@19.0.0):

@@ -1,33 +1,51 @@
 "use client";
 
-import Model from "@/components/Model";
-import { OrbitControls, Stage } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Sections/Hero";
+import Projects from "@/components/Sections/Projects";
+import { useEffect, useRef, useState } from "react";
+import { useScroll, useTransform } from "motion/react";
+import { usePathname } from "next/navigation";
 
 export default function Home() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [totalHeight, setTotalHeight] = useState(0);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
+
+  const heroSectionY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const projectsSectionY = useTransform(scrollYProgress, [0, 1], [0, -320]);
+
+  useEffect(() => {
+    function updateHeight() {
+      if (containerRef.current) {
+        setTotalHeight(containerRef.current.scrollHeight);
+      }
+    }
+
+    updateHeight();
+
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col w-screen">
-      <section className="w-screen h-screen bg-[#FDF0D5] flex flex-col items-center justify-center py-24">
-        <div className="flex flex-col items-end">
-          <h4 className="text-[#780000] text-[3.2rem] font-semibold">
-            Hi, I'm
-          </h4>
-          <h1 className="text-[#C1121F] text-[21rem] leading-[12rem] tracking-tight -mr-[2rem] -mt-[1rem] byte">
-            SNIPPY
-          </h1>
-          <h2 className="text-[#780000] text-[2rem] font-medium leading-[2.5rem] place-self-start">
-            Bringing designs to life, one pixel at a time.
-          </h2>
-        </div>
-        <Canvas shadows dpr={[1, 2]} camera={{ fov: 50 }}>
-          <Suspense fallback={null}>
-            <Stage preset="soft" intensity={2} environment="city">
-              <Model />
-            </Stage>
-          </Suspense>
-        </Canvas>
-      </section>
+    <main className="flex flex-col w-screen bg-[#FDF0D5] relative" style={{ height: totalHeight }}>
+      <Navbar />
+      <div ref={containerRef} className="fixed top-0 left-0 w-screen will-change-transform z-0">
+        <Hero y={heroSectionY} />
+        <Projects y={projectsSectionY} />
+      </div>
     </main>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Lenis from "@/lenis";
 
 export const metadata: Metadata = {
   title: "Snippy | Portfolio",
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       <body className="antialiased">
-        {children}
+        <Lenis>
+          {children}
+        </Lenis>
       </body>
     </html>
   );
