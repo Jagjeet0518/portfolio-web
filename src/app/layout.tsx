@@ -14,11 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light">
-      <body className="antialiased">
-        <Lenis>
+      <Lenis>
+        <body className="antialiased">
           {children}
-        </Lenis>
-      </body>
+        </body>
+      </Lenis>
     </html>
   );
 }

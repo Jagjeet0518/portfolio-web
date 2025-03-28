@@ -3,13 +3,12 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Sections/Hero";
 import Projects from "@/components/Sections/Projects";
-import { useEffect, useRef, useState } from "react";
-import { useScroll, useTransform } from "motion/react";
+import { useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { usePathname } from "next/navigation";
-
+import About from "@/components/Sections/About";
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [totalHeight, setTotalHeight] = useState(0);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -25,27 +24,15 @@ export default function Home() {
 
   const heroSectionY = useTransform(scrollYProgress, [0, 1], [0, -40]);
   const projectsSectionY = useTransform(scrollYProgress, [0, 1], [0, -320]);
-
-  useEffect(() => {
-    function updateHeight() {
-      if (containerRef.current) {
-        setTotalHeight(containerRef.current.scrollHeight);
-      }
-    }
-
-    updateHeight();
-
-    window.addEventListener("resize", updateHeight);
-    return () => window.removeEventListener("resize", updateHeight);
-  }, []);
+  const aboutSectionY = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
   return (
-    <main className="flex flex-col w-screen bg-[#FDF0D5] relative" style={{ height: totalHeight }}>
+    <motion.main style={{ marginBottom: projectsSectionY }} className="flex flex-col w-screen bg-[#FDF0D5] relative overflow-hidden min-h-screen" ref={containerRef}>
       <Navbar />
-      <div ref={containerRef} className="fixed top-0 left-0 w-screen will-change-transform z-0">
-        <Hero y={heroSectionY} />
-        <Projects y={projectsSectionY} />
-      </div>
-    </main>
+      <Hero y={heroSectionY} />
+      <Projects y={projectsSectionY} />
+      <About y={aboutSectionY} />
+      <Projects y={projectsSectionY} />
+    </motion.main>
   );
 }

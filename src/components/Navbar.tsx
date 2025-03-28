@@ -1,5 +1,6 @@
-import { motion } from "motion/react"
+import { motion, useMotionValueEvent, useScroll } from "motion/react"
 import Link from "next/link"
+import { useState } from "react";
 
 const links = [
     { name: "Services", href: "#about" },
@@ -8,12 +9,22 @@ const links = [
 ]
 
 export default function Navbar() {
+
+    const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down");
+
+    const { scrollY } = useScroll()
+
+    useMotionValueEvent(scrollY, "change", (current) => {
+        const diff = current - (scrollY.getPrevious() ?? current);
+        setScrollDirection(diff > 0 ? "down" : "up");
+    })
+
     return (
         <motion.nav
-        initial={{ opacity: 0, y: "-100%" }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.83, 0, 0.17, 1] }}
-        className="fixed w-screen h-20 bg-transparent backdrop-blur-sm px-20 py-4 flex items-center justify-center gap-16 z-[999]">
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.83, 0, 0.17, 1] }}
+            className="fixed w-screen h-20 bg-transparent backdrop-blur-sm px-12 py-4 flex items-center justify-center gap-16 z-[999]">
             {links.map((link) => (
                 <NavbarItem key={link.name} {...link} />
             ))}

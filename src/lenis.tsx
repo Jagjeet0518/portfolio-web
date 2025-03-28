@@ -19,7 +19,7 @@ export default function Lenis({ children }: { children: React.ReactNode }) {
     }, [])
 
     return (
-        <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
+        <ReactLenis root options={{ autoRaf: false, lerp: 0.15 }} ref={lenisRef}>
             {children}
         </ReactLenis>
     )
