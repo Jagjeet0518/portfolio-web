@@ -1,6 +1,7 @@
 "use client";
-import { motion, MotionValue } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { motion, MotionProps, MotionValue } from "motion/react";
+import { HtmlProps } from "next/dist/shared/lib/html-context.shared-runtime";
+import { DetailedHTMLProps, HTMLAttributes, useEffect, useRef, useState } from "react";
 import { PiMouseScroll } from "react-icons/pi";
 
 // import Model from "@/components/Model";
@@ -11,34 +12,39 @@ import { PiMouseScroll } from "react-icons/pi";
 export default function Hero({ y }: { y: MotionValue<number> }) {
 
     return (
-        <motion.section style={{ y }} className="w-screen min-h-screen bg-[#FDF0D5] flex flex-col items-center justify-center py-24 z-10">
+        <motion.section style={{ y }} className="w-screen min-h-screen bg-[url('/bg.webp')] flex flex-col items-center justify-center py-24 z-10">
             <div className="flex flex-col items-end">
                 <motion.h4
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1, ease: [0.83, 0, 0.17, 1] }}
-                    className="text-[#C1121F] text-[3.2rem] font-semibold">
+                    initial={{ opacity: 0, x: 50, filter: "blur(4px)" }}
+                    animate={{ opacity: 1, x: 0, filter: "blur(0)" }}
+                    transition={{ duration: .5, ease: [0.45, 0, 0.55, 1] }}
+                    className="text-[#F6E8EA] text-[2.5rem] font-semibold">
                     Hi, I'm
                 </motion.h4>
-                <ScrambleText targetText="SniPPY" />
+                <ScrambleText targetText="SniPPY"
+                    initial={{ opacity: 0, scale: 0.5, filter: "blur(4px)" }}
+                    animate={{ opacity: 1, scale: 1, filter: "blur(0)" }}
+                    transition={{ duration: .75, ease: [0.45, 0, 0.55, 1], delay: .25 }}
+                    className="text-[#F6E8EA] text-[16rem] leading-[12rem] tracking-tight -mr-[2rem] -mt-[1rem] byte"
+                />
                 <motion.p
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1, ease: [0.83, 0, 0.17, 1] }}
-                    className="text-[#C1121F] text-[2rem] font-medium leading-[2.5rem] place-self-start">
+                    initial={{ opacity: 0, x: -50, filter: "blur(4px)" }}
+                    animate={{ opacity: 1, x: 0, filter: "blur(0)" }}
+                    transition={{ duration: 1, ease: [0.45, 0, 0.55, 1], delay: .5 }}
+                    className="text-[#F6E8EA] text-[1.5rem] font-medium leading-[2.5rem] place-self-start">
                     Bringing designs to life, one pixel at a time.
                 </motion.p>
             </div>
             <motion.div
                 animate={{ y: -20, transition: { repeat: Infinity, repeatType: "mirror", duration: 1, ease: "easeInOut" } }}
                 className="absolute bottom-8">
-                <PiMouseScroll size={40} color="#C1121F" />
+                <PiMouseScroll size={40} color="#F6E8EA" />
             </motion.div>
         </motion.section>
     )
 }
 
-const ScrambleText = ({ targetText }: { targetText: string }) => {
+const ScrambleText = ({ targetText, ...props }: { targetText: string } & MotionProps & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>) => {
     const CYCLES_PER_LETTER = 5;
     const SHUFFLE_TIME = 50;
     const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -87,11 +93,7 @@ const ScrambleText = ({ targetText }: { targetText: string }) => {
     }, []);
 
     return (
-        <motion.h1
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: .5, ease: [0.83, 0, 0.17, 1] }}
-            className="text-[#C1121F] text-[21rem] leading-[12rem] tracking-tight -mr-[2rem] -mt-[1rem] byte">
+        <motion.h1 {...props}>
             {text}
         </motion.h1>
     )
