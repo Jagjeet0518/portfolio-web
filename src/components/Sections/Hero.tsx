@@ -33,7 +33,7 @@ export default function Hero({ y }: { y: MotionValue<number> }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, ease: [0.45, 0, 0.55, 1], delay: 3.5 }}
-                className="absolute bottom-8 z-10">
+                className="absolute bottom-12 z-10">
                 <motion.div
                     initial={{ y: 0 }}
                     animate={{ y: -20, transition: { repeat: Infinity, repeatType: "mirror", duration: 1, ease: "easeInOut" } }}>

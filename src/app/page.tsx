@@ -31,13 +31,13 @@ export default function Home() {
   const connectSectionY = useTransform(scrollYProgress, [0, 1], [0, -600]);
 
   return (
-    <motion.main style={{ marginBottom: connectSectionY }} className="flex flex-col w-screen bg-[#FDF0D5] relative overflow-hidden min-h-screen" ref={containerRef}>
+    <motion.main style={{ marginBottom: connectSectionY }} className="flex flex-col w-screen bg-[#111] relative overflow-hidden min-h-screen" ref={containerRef}>
       <Cursor />
       <Opener />
       <Navbar />
       <Hero y={heroSectionY} />
       <Projects y={projectsSectionY} />
-      {/* <About y={aboutSectionY} /> */}
+      <About y={aboutSectionY} />
       <Connect y={connectSectionY} />
     </motion.main>
   );
