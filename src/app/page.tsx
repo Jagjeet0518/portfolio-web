@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import About from "@/components/Sections/About";
 import Opener from "@/components/Opener";
 import Cursor from "@/components/Cursor";
+import Connect from "@/components/Sections/Connect";
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -27,15 +28,17 @@ export default function Home() {
   const heroSectionY = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const projectsSectionY = useTransform(scrollYProgress, [0, 1], [0, -600]);
   const aboutSectionY = useTransform(scrollYProgress, [0, 1], [0, -600]);
+  const connectSectionY = useTransform(scrollYProgress, [0, 1], [0, -600]);
 
   return (
-    <motion.main style={{ marginBottom: aboutSectionY }} className="flex flex-col w-screen bg-[#FDF0D5] relative overflow-hidden min-h-screen" ref={containerRef}>
+    <motion.main style={{ marginBottom: connectSectionY }} className="flex flex-col w-screen bg-[#FDF0D5] relative overflow-hidden min-h-screen" ref={containerRef}>
       <Cursor />
       <Opener />
       <Navbar />
       <Hero y={heroSectionY} />
       <Projects y={projectsSectionY} />
-      <About y={aboutSectionY} />
+      {/* <About y={aboutSectionY} /> */}
+      <Connect y={connectSectionY} />
     </motion.main>
   );
 }
