@@ -15,6 +15,7 @@ const spring = { damping: 10, stiffness: 100, restDelta: 0.001 }
 export function useFollowPointer(ref: RefObject<HTMLDivElement | null>) {
     const x = useSpring(0, spring)
     const y = useSpring(0, spring)
+    const scale = useSpring(0, spring)
     const [opacity, setOpacity] = useState(0)
 
     useEffect(() => {
@@ -26,6 +27,17 @@ export function useFollowPointer(ref: RefObject<HTMLDivElement | null>) {
             frame.read(() => {
                 let xVal = clientX - element.offsetLeft - element.offsetWidth / 2;
                 let yVal = clientY - element.offsetTop - element.offsetHeight / 2;
+                x.set(xVal)
+                y.set(yVal)
+                if (opacity == 0 && xVal != 0 || yVal != 0) setOpacity(1);
+            })
+        }
+
+        const handlePointerLinkHover = (e: PointerEvent) => {
+            const element = ref.current!
+            frame.read(() => {
+                let xVal = e.clientX - element.offsetLeft - element.offsetWidth / 2;
+                let yVal = e.clientY - element.offsetTop - element.offsetHeight / 2;
                 x.set(xVal)
                 y.set(yVal)
                 if (opacity == 0 && xVal != 0 || yVal != 0) setOpacity(1);

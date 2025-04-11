@@ -6,7 +6,7 @@ import { PiMouseScroll } from "react-icons/pi";
 export default function Hero({ y }: { y: MotionValue<number> }) {
 
     return (
-        <motion.section style={{ y }} className="w-screen min-h-screen bg-[url('/bg.webp')] flex flex-col items-center justify-center py-24 z-10">
+        <motion.section style={{ y }} className="w-screen min-h-screen bg-[url('/bg.webp')] flex flex-col items-center justify-center py-24 z-10 relative">
             <div className="flex flex-col items-end">
                 <motion.h4
                     initial={{ opacity: 0, x: 50, filter: "blur(4px)" }}
@@ -30,11 +30,17 @@ export default function Hero({ y }: { y: MotionValue<number> }) {
                 </motion.p>
             </div>
             <motion.div
-                animate={{ y: -20, transition: { repeat: Infinity, repeatType: "mirror", duration: 1, ease: "easeInOut", delay: 2.5 } }}
-                className="absolute bottom-8">
-                <PiMouseScroll size={40} color="#F6E8EA" />
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, ease: [0.45, 0, 0.55, 1], delay: 3.5 }}
+                className="absolute bottom-8 z-10">
+                <motion.div
+                    initial={{ y: 0 }}
+                    animate={{ y: -20, transition: { repeat: Infinity, repeatType: "mirror", duration: 1, ease: "easeInOut" } }}>
+                    <PiMouseScroll size={40} color="#F6E8EA" />
+                </motion.div>
             </motion.div>
-        </motion.section>
+        </motion.section >
     )
 }
 
