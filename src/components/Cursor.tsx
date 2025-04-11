@@ -7,7 +7,7 @@ export default function Drag() {
     const ref = useRef<HTMLDivElement>(null)
     const { x, y, opacity } = useFollowPointer(ref)
 
-    return <motion.div ref={ref} style={{ x, y, opacity }} className="size-[40px] rounded-full bg-white mix-blend-difference fixed z-[999999]" />
+    return <motion.div ref={ref} style={{ x, y, opacity }} className="size-[48px] rounded-full bg-white mix-blend-difference fixed z-[999999]" />
 }
 
 const spring = { damping: 10, stiffness: 100, restDelta: 0.001 }
@@ -19,7 +19,7 @@ export function useFollowPointer(ref: RefObject<HTMLDivElement | null>) {
     const [opacity, setOpacity] = useState(0)
 
     useEffect(() => {
-        if (!ref.current) return
+        if (!ref.current) return;
 
         const handlePointerMove = ({ clientX, clientY }: MouseEvent) => {
             const element = ref.current!
@@ -46,8 +46,9 @@ export function useFollowPointer(ref: RefObject<HTMLDivElement | null>) {
 
         window.addEventListener("pointermove", handlePointerMove)
 
-        return () =>
+        return () => {
             window.removeEventListener("pointermove", handlePointerMove)
+        }
     }, [])
 
     return { x, y, opacity }
